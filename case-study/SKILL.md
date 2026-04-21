@@ -4,7 +4,7 @@ description: Help designers and design engineers write portfolio case studies as
 compatibility: Requires git for design engineer mode. Optionally uses analytics MCP servers (Amplitude, PostHog, Mixpanel) for metrics discovery.
 metadata:
   author: jakubsalmik
-  version: "1.1.0"
+  version: "1.1.1"
   url: https://jakubsalmik.com/case-study-skill
 ---
 

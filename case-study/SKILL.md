@@ -2,9 +2,10 @@
 name: case-study
 description: Help designers and design engineers write portfolio case studies as markdown files. Use this skill whenever someone wants to write a case study, portfolio piece, project write-up, or craft essay about something they designed or built. Triggers on "case study," "portfolio piece," "write up what I built," "document this feature," "craft post," or any request to turn shipped (or unshipped) design work into a presentable markdown page. Also triggers when someone mentions a git branch, PR, or diff in the context of writing about their work, or wants to pull analytics data to quantify impact. Works for all designer types — UX, product, visual, interaction, design systems, research, and design engineering. This is a portfolio coach that asks the right questions, not a template filler.
 compatibility: Requires git for design engineer mode. Optionally uses analytics MCP servers (Amplitude, PostHog, Mixpanel) for metrics discovery.
+license: MIT
 metadata:
   author: jakubsalmik
-  version: "1.1.1"
+  version: "1.1.2"
   url: https://jakubsalmik.com/case-study-skill
 ---
 

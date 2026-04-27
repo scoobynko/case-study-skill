@@ -94,7 +94,7 @@ Common drift to look for:
 
 Run this checkpoint in two steps:
 
-1. **Check what's connected.** If an analytics MCP is available (Amplitude, PostHog, Mixpanel, GA4), say so to the user and offer to pull data: "I see Amplitude is connected. Want me to look up impact metrics for this feature?" If nothing is connected, ask: "Do you have analytics data for this (Amplitude, PostHog, GA, dashboards, internal queries)? I can shape questions you can run, or work without numbers."
+1. **Check what's connected.** Scan the available MCP servers for anything analytics-shaped (Amplitude, PostHog, Mixpanel, GA4, Statsig, Heap, Pendo, Hex, Metabase, internal warehouses, etc.). If you find one, say so and offer to pull data: "I see Amplitude is connected. Want me to look up impact metrics for this feature?" If you do not recognize any of the connected MCPs as analytics, still ask: "I don't see an analytics MCP I recognize. Do you have one connected I might be missing, or analytics data elsewhere (dashboards, internal queries, A/B test platform)? I can shape queries you run yourself, or work without numbers." Never assume the absence of a known name means there's no data source — many teams use internal or less-common tools.
 2. **Then ask the framing question:** "Is this project better told through numbers or through the work itself?" Only skip metrics after the user confirms the story is craft-led, not because the topic never came up.
 
 **Metrics strengthen the story**: performance work, conversion optimization, adoption of a new feature, simplification that reduced errors. For these, lean toward pulling data even if the user didn't mention it.

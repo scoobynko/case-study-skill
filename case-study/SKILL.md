@@ -33,7 +33,17 @@ Core principles:
 - **Honest beats impressive.** Show rejected directions. Admit trade-offs. Say "this didn't ship" if it didn't. Skip sections that would be filler.
 - **Short.** Target 800 to 1,500 words. 5 to 8 minute read.
 
-For additional context on what hiring managers specifically look for, read `references/hiring-rubric.md`. Useful calibration, not the primary lens.
+**Read `references/hiring-rubric.md` before drafting.** It is the calibration layer for what separates strong from weak portfolios: what hiring managers actually evaluate, the red flags that sink case studies, and the signals that elevate them. Use it as a checklist when reviewing the draft in Step 6, not as the primary writing lens.
+
+## How to use the reference files
+
+This skill is intentionally split across `SKILL.md` and `references/`. The references are not optional appendices — they hold the substantive process for the moments where shallow execution fails:
+
+- `references/structure-guide.md` — required reading at Step 1 (designer type), Step 2 (type-specific follow-ups), and Step 3 (story shape and narrative framework). Open it the first time each step asks for it; do not draft from memory.
+- `references/metrics-guide.md` — required reading the moment metrics enter scope (Step 1.5 metrics checkpoint, or Step 2 question #15). Holds the metric-type table, comparison-window rules, and metrics brief format.
+- `references/hiring-rubric.md` — calibration layer. Read once before writing; revisit during Step 6 review.
+
+Rule of thumb: if a step in this file points to a reference, the reference contains the actual instructions and the SKILL.md text is the summary. Read the reference.
 
 ## Step 1: Detect mode and designer type
 
@@ -46,7 +56,7 @@ Read the user's prompt and determine:
 
 If the user describes themselves as a "designer" but the work lives in this repo, you are in hybrid mode. Default to grounding in code.
 
-**Designer type**: what kind of designer are they? This changes which questions to ask and how to structure the output. Read `references/structure-guide.md` for type-specific guidance. The types are:
+**Designer type**: what kind of designer are they? This changes which questions to ask and how to structure the output. **Open `references/structure-guide.md` now and read the section for the matching type before continuing.** The summary list below is only for routing; the guide has the actual question framing, section ordering, and visual emphasis per type. The types are:
 
 - **UX designer**: process-heavy, research-driven, user-centered framing
 - **Product designer**: outcome-first, tradeoffs with PM/Eng, business + user impact
@@ -147,7 +157,7 @@ Do NOT dump all questions at once. Ask 2 to 3 at a time, conversationally. Adapt
 
 ### Additional questions by type
 
-Read `references/structure-guide.md` for type-specific follow-up questions.
+The questions above are the universal set. Each designer type has follow-ups that surface what's specific to their craft (e.g. research methods for UX researchers, governance for design systems, motion specs for interaction designers). **Read the type-specific section in `references/structure-guide.md` and ask those follow-ups too.** Skipping them produces case studies that read the same regardless of designer type.
 
 ### NDA-constrained work
 
@@ -175,7 +185,7 @@ Their answer determines the structure. Different projects have different story s
 - **A collaboration challenge**: how you aligned, negotiated, and got the work out the door.
 - **A systemic change**: the before/after at the system level. What was the world before your work, and what is it now?
 
-Read `references/structure-guide.md` for narrative frameworks (BLUF, Minto Pyramid, Freytag's arc, magazine feature, craft essay) and match the framework to the story shape.
+**Read `references/structure-guide.md` now** for the narrative frameworks (BLUF, Minto Pyramid, Freytag's arc, magazine feature, craft essay) and match the framework to the story shape. Picking the framework from memory leads to defaulting to the same one every time. The guide has the criteria for choosing.
 
 **Do not default to the same section order for every project.** If every case study in a portfolio reads the same way, it signals the designer is executing a template rather than thinking about what makes each project distinct.
 

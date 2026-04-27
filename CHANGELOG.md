@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.1](https://github.com/scoobynko/case-study-skill/compare/v1.3.0...v1.3.1) (2026-04-27)
+
+
+### Bug Fixes
+
+* add voice rules to avoid AI-slop tells in case study output ([f3cc96e](https://github.com/scoobynko/case-study-skill/commit/f3cc96ec1662492820f15bc48ebbc6567f7d6aba))
+* trigger release for voice rules ([#3](https://github.com/scoobynko/case-study-skill/issues/3)) ([aed755d](https://github.com/scoobynko/case-study-skill/commit/aed755dbce94ed83538e4f7fe8aab0a8f97dd553))
+
 ## [1.3.0](https://github.com/scoobynko/case-study-skill/compare/v1.2.0...v1.3.0) (2026-04-27)
 
 

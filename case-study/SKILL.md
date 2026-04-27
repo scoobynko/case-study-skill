@@ -5,7 +5,7 @@ compatibility: Requires git for design engineer mode. Optionally uses analytics 
 license: MIT
 metadata:
   author: jakubsalmik
-  version: "1.4.0" # x-release-please-version
+  version: "1.4.1" # x-release-please-version
   url: https://jakubsalmik.com/case-study-skill
 ---
 
@@ -88,15 +88,20 @@ Common drift to look for:
 - "We deleted the old component": `ls` for it; dormant is not deleted
 - Step counts, copy, illustration mechanics in onboarding/empty-state UI
 
-### Discover metrics (when they strengthen the story)
+### Discover metrics (do this every time, then decide)
 
-Not every project is a metrics story. Before running the discovery, ask: "Is this project better told through numbers or through the work itself?"
+**Always raise metrics explicitly.** Do not skip this step silently. The user will not always remember to bring up impact data, and a case study that could have had real numbers but didn't is a missed opportunity. Make metrics a visible checkpoint, not a footnote.
 
-**Metrics strengthen the story**: performance work, conversion optimization, adoption of a new feature, simplification that reduced errors.
+Run this checkpoint in two steps:
 
-**Metrics are noise**: craft-focused work (a beautiful interaction doesn't need a conversion funnel), early-stage exploration, design system foundations before adoption data exists, work where the value is in the thinking.
+1. **Check what's connected.** If an analytics MCP is available (Amplitude, PostHog, Mixpanel, GA4), say so to the user and offer to pull data: "I see Amplitude is connected. Want me to look up impact metrics for this feature?" If nothing is connected, ask: "Do you have analytics data for this (Amplitude, PostHog, GA, dashboards, internal queries)? I can shape questions you can run, or work without numbers."
+2. **Then ask the framing question:** "Is this project better told through numbers or through the work itself?" Only skip metrics after the user confirms the story is craft-led, not because the topic never came up.
 
-If metrics are relevant, read `references/metrics-guide.md` for the full discovery process.
+**Metrics strengthen the story**: performance work, conversion optimization, adoption of a new feature, simplification that reduced errors. For these, lean toward pulling data even if the user didn't mention it.
+
+**Metrics are noise**: craft-focused work (a beautiful interaction doesn't need a conversion funnel), early-stage exploration, design system foundations before adoption data exists, work where the value is in the thinking. Even here, name that you considered metrics and chose to skip them, so the decision is deliberate.
+
+Whenever metrics are in scope, read `references/metrics-guide.md` and follow the full discovery process before drafting. In designer mode, still ask the user about metrics in Step 2 question #15 explicitly, even if you can't pull them yourself.
 
 ### Additional design engineer questions
 
@@ -134,7 +139,7 @@ Do NOT dump all questions at once. Ask 2 to 3 at a time, conversationally. Adapt
 
 ### Understanding the outcome and growth
 
-15. **What was the outcome?** Metrics if available, qualitative feedback if not. Be specific or skip it. "Users liked it" is not an outcome. (If metrics are central to the story, read `references/metrics-guide.md`.)
+15. **What was the outcome? Do you have metrics?** Always ask about metrics explicitly, even in designer mode. Probe for what's available: analytics dashboards (Amplitude, PostHog, GA), internal queries, A/B test results, support ticket deltas, qualitative feedback, adoption numbers. If the user has data but hasn't pulled it, offer to help shape the queries. If an analytics MCP is connected, offer to pull the numbers directly. Be specific or skip it: "Users liked it" is not an outcome. (If metrics are central to the story, read `references/metrics-guide.md`.)
 16. **What would you do differently?** Honest trade-offs, shortcuts, known debt.
 17. **How did this project change how you think about design?** Not a section to check off. What they carry forward. How this project made them a different designer.
 

@@ -5,7 +5,7 @@ compatibility: Requires git for design engineer mode. Optionally uses analytics 
 license: MIT
 metadata:
   author: jakubsalmik
-  version: "1.1.2"
+  version: "1.2.0" # x-release-please-version
   url: https://jakubsalmik.com/case-study-skill
 ---
 
@@ -39,7 +39,12 @@ For additional context on what hiring managers specifically look for, read `refe
 
 Read the user's prompt and determine:
 
-**Mode**: did they provide or mention a git branch, diff, PR, or codebase? If yes, this is design engineer mode. If no, designer mode.
+**Mode**: detect the medium the work shipped in.
+- **Designer mode**: work shipped (or will ship) primarily as Figma frames or static deliverables.
+- **Design engineer mode**: work shipped as code, regardless of whether the user calls themselves a designer or an engineer. The user does NOT need to paste a diff or PR URL — being in a git repo where the work lives is enough.
+- **Hybrid**: a designer-led project that shipped in code with no Figma stage (e.g. the design only resolved in motion, real data, or live input). Treat as design engineer mode for code-grounding purposes; treat as designer mode for question framing (POV, tradeoffs, taste).
+
+If the user describes themselves as a "designer" but the work lives in this repo, you are in hybrid mode. Default to grounding in code.
 
 **Designer type**: what kind of designer are they? This changes which questions to ask and how to structure the output. Read `references/structure-guide.md` for type-specific guidance. The types are:
 
@@ -52,6 +57,52 @@ Read the user's prompt and determine:
 - **Design engineer**: code + design, craft details, performance metrics
 
 If the type is unclear from the prompt, ask. One question, not a quiz.
+
+## Step 1.5: Ground in code FIRST (design engineer or hybrid mode)
+
+If the work shipped as code in a repo the user is in — even if they describe themselves as a "designer," not a "design engineer" — run this BEFORE asking clarifying questions. Listing file paths is not the same as reading them.
+
+The point is to ask questions grounded in what actually shipped, not in what the user remembers shipping.
+
+### Read the actual changes
+
+git log <main>..<feature-branch> --oneline --no-merges
+git diff <main>...<feature-branch> --stat
+gh pr list --state merged --search "<scope>" --limit 5
+
+Then OPEN the most interesting 2 to 4 shipped files. Read them, don't just confirm they exist. Pay attention to:
+- What the component actually does on mount, on user input, on cleanup
+- Coordinated calls across subsystems (a real fix vs. a single-button workaround)
+- Tests, which often document the behaviour the user is proudest of
+- Comments that name trade-offs, TODOs, or "v2" markers
+
+### Specs describe intent. Code describes reality.
+
+If the user has design specs in the repo (e.g. `docs/specs/*.md`), read them for context, but treat them as a planning artifact, not as ground truth. Specs get written before implementation and rarely get updated after pivots.
+
+When the spec and the code disagree, the code wins. ALWAYS verify spec claims against the shipped implementation before describing them in the case study. A 30-second `grep` is cheaper than a paragraph the user has to correct.
+
+Common drift to look for:
+- "We shipped X as a workaround" — check if X actually got solved properly later
+- "We added an analytics event" — grep for the event name
+- "We deleted the old component" — `ls` for it; dormant ≠ deleted
+- Step counts, copy, illustration mechanics in onboarding/empty-state UI
+
+### Discover metrics (when they strengthen the story)
+
+Not every project is a metrics story. Before running the discovery, ask: "Is this project better told through numbers or through the work itself?"
+
+**Metrics strengthen the story**: performance work, conversion optimization, adoption of a new feature, simplification that reduced errors.
+
+**Metrics are noise**: craft-focused work (a beautiful interaction doesn't need a conversion funnel), early-stage exploration, design system foundations before adoption data exists, work where the value is in the thinking.
+
+If metrics are relevant, read `references/metrics-guide.md` for the full discovery process.
+
+### Additional design engineer questions
+
+- What's the most interesting technical problem you solved?
+- Any performance improvements you can quantify? (Bundle size, LCP, FCP, TTI)
+- What interaction details are you proud of? (Specific easing curves, spring parameters, transition timing)
 
 ## Step 2: Ask the right questions
 
@@ -100,36 +151,6 @@ If the user mentions they can't show visuals or specifics:
 
 Never encourage them to show more than they're comfortable with.
 
-## Step 2b: Design engineer mode (git + metrics)
-
-If the user is in design engineer mode, also run these steps:
-
-### Read the diff
-
-```bash
-git diff main...feature-branch --stat
-git diff main...feature-branch -- '*.tsx' '*.ts' '*.css' '*.scss' '*.mdx' '*.md'
-git log main...feature-branch --oneline --no-merges
-```
-
-Focus on frontend-relevant files. Skip lockfiles, configs, generated code. If the diff is huge (>500 lines), summarize by file and read the interesting hunks.
-
-### Discover metrics (when they strengthen the story)
-
-Not every project is a metrics story. Before running the discovery, ask: "Is this project better told through numbers or through the work itself?"
-
-**Metrics strengthen the story**: performance work, conversion optimization, adoption of a new feature, simplification that reduced errors.
-
-**Metrics are noise**: craft-focused work (a beautiful interaction doesn't need a conversion funnel), early-stage exploration, design system foundations before adoption data exists, work where the value is in the thinking.
-
-If metrics are relevant, read `references/metrics-guide.md` for the full discovery process.
-
-### Additional design engineer questions
-
-- What's the most interesting technical problem you solved?
-- Any performance improvements you can quantify? (Bundle size, LCP, FCP, TTI)
-- What interaction details are you proud of? (Specific easing curves, spring parameters, transition timing)
-
 ## Step 3: Find the story shape
 
 This is the most important step. Before writing, identify what makes this project worth reading about.
@@ -159,6 +180,7 @@ Before writing, review what you have. Challenge weak spots:
 - **Vague outcomes** -> Better to say "too early to measure" or "project was deprioritized" than to invent metrics.
 - **No point of view** -> "What do you believe about this that others might disagree with?" Even a small opinion makes the work feel authored rather than executed.
 - **No craft detail** -> "What's the thing you spent time on that nobody will notice?" If they can't answer, maybe this project isn't a craft story, and that's fine.
+- **Verify every concrete claim against code before writing it.** If you're about to describe a workaround, check the code says it's a workaround. If you're about to describe a coordinated cleanup, grep for the cleanup. The user shouldn't have to fact-check your draft against their own commit history.
 
 ## Step 5: Write the case study
 

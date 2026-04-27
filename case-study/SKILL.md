@@ -33,7 +33,17 @@ Core principles:
 - **Honest beats impressive.** Show rejected directions. Admit trade-offs. Say "this didn't ship" if it didn't. Skip sections that would be filler.
 - **Short.** Target 800 to 1,500 words. 5 to 8 minute read.
 
-For additional context on what hiring managers specifically look for, read `references/hiring-rubric.md`. Useful calibration, not the primary lens.
+**Read `references/hiring-rubric.md` before drafting.** It is the calibration layer for what separates strong from weak portfolios: what hiring managers actually evaluate, the red flags that sink case studies, and the signals that elevate them. Use it as a checklist when reviewing the draft in Step 6, not as the primary writing lens.
+
+## How to use the reference files
+
+This skill is intentionally split across `SKILL.md` and `references/`. The references are not optional appendices — they hold the substantive process for the moments where shallow execution fails:
+
+- `references/structure-guide.md` — required reading at Step 1 (designer type), Step 2 (type-specific follow-ups), and Step 3 (story shape and narrative framework). Open it the first time each step asks for it; do not draft from memory.
+- `references/metrics-guide.md` — required reading the moment metrics enter scope (Step 1.5 metrics checkpoint, or Step 2 question #15). Holds the metric-type table, comparison-window rules, and metrics brief format.
+- `references/hiring-rubric.md` — calibration layer. Read once before writing; revisit during Step 6 review.
+
+Rule of thumb: if a step in this file points to a reference, the reference contains the actual instructions and the SKILL.md text is the summary. Read the reference.
 
 ## Step 1: Detect mode and designer type
 
@@ -46,7 +56,7 @@ Read the user's prompt and determine:
 
 If the user describes themselves as a "designer" but the work lives in this repo, you are in hybrid mode. Default to grounding in code.
 
-**Designer type**: what kind of designer are they? This changes which questions to ask and how to structure the output. Read `references/structure-guide.md` for type-specific guidance. The types are:
+**Designer type**: what kind of designer are they? This changes which questions to ask and how to structure the output. **Open `references/structure-guide.md` now and read the section for the matching type before continuing.** The summary list below is only for routing; the guide has the actual question framing, section ordering, and visual emphasis per type. The types are:
 
 - **UX designer**: process-heavy, research-driven, user-centered framing
 - **Product designer**: outcome-first, tradeoffs with PM/Eng, business + user impact
@@ -88,15 +98,22 @@ Common drift to look for:
 - "We deleted the old component": `ls` for it; dormant is not deleted
 - Step counts, copy, illustration mechanics in onboarding/empty-state UI
 
-### Discover metrics (when they strengthen the story)
+### Discover metrics (do this every time, then decide)
 
-Not every project is a metrics story. Before running the discovery, ask: "Is this project better told through numbers or through the work itself?"
+**Always raise metrics explicitly.** Do not skip this step silently. The user will not always remember to bring up impact data, and a case study that could have had real numbers but didn't is a missed opportunity. Make metrics a visible checkpoint, not a footnote.
 
-**Metrics strengthen the story**: performance work, conversion optimization, adoption of a new feature, simplification that reduced errors.
+**Required reading before this checkpoint:** open `references/metrics-guide.md` and read it now. It contains the full discovery process — how to map code changes to user behaviors, which metric type fits which change, how to define a fair comparison window, how to present the metrics brief, and how to connect to and query analytics MCPs. The summary in this file is not a substitute. Do not run the checkpoint from memory.
 
-**Metrics are noise**: craft-focused work (a beautiful interaction doesn't need a conversion funnel), early-stage exploration, design system foundations before adoption data exists, work where the value is in the thinking.
+Run this checkpoint in two steps:
 
-If metrics are relevant, read `references/metrics-guide.md` for the full discovery process.
+1. **Check what's connected.** Scan the available MCP servers for anything analytics-shaped (Amplitude, PostHog, Mixpanel, GA4, Statsig, Heap, Pendo, Hex, Metabase, internal warehouses, etc.). If you find one, say so and offer to pull data: "I see Amplitude is connected. Want me to look up impact metrics for this feature?" If you do not recognize any of the connected MCPs as analytics, still ask: "I don't see an analytics MCP I recognize. Do you have one connected I might be missing, or analytics data elsewhere (dashboards, internal queries, A/B test platform)? I can shape queries you run yourself, or work without numbers." Never assume the absence of a known name means there's no data source — many teams use internal or less-common tools.
+2. **Then ask the framing question:** "Is this project better told through numbers or through the work itself?" Only skip metrics after the user confirms the story is craft-led, not because the topic never came up.
+
+**Metrics strengthen the story**: performance work, conversion optimization, adoption of a new feature, simplification that reduced errors. For these, lean toward pulling data even if the user didn't mention it.
+
+**Metrics are noise**: craft-focused work (a beautiful interaction doesn't need a conversion funnel), early-stage exploration, design system foundations before adoption data exists, work where the value is in the thinking. Even here, name that you considered metrics and chose to skip them, so the decision is deliberate.
+
+Once you've decided metrics are in scope, follow `references/metrics-guide.md` end-to-end before drafting. The guide is the authoritative process — its metric-type table, comparison-window rules, and metrics-brief format are how you avoid presenting vanity numbers. In designer mode, still ask the user about metrics in Step 2 question #15 explicitly, even if you can't pull them yourself; the guide's framing for honest impact presentation applies there too.
 
 ### Additional design engineer questions
 
@@ -134,13 +151,13 @@ Do NOT dump all questions at once. Ask 2 to 3 at a time, conversationally. Adapt
 
 ### Understanding the outcome and growth
 
-15. **What was the outcome?** Metrics if available, qualitative feedback if not. Be specific or skip it. "Users liked it" is not an outcome. (If metrics are central to the story, read `references/metrics-guide.md`.)
+15. **What was the outcome? Do you have metrics?** Always ask about metrics explicitly, even in designer mode. Probe for what's available: analytics dashboards (Amplitude, PostHog, GA), internal queries, A/B test results, support ticket deltas, qualitative feedback, adoption numbers. If the user has data but hasn't pulled it, offer to help shape the queries — `references/metrics-guide.md` has the metric-type table and presentation format you should pull from when shaping those questions. If an analytics MCP is connected, offer to pull the numbers directly and follow the guide's discovery steps. Be specific or skip it: "Users liked it" is not an outcome.
 16. **What would you do differently?** Honest trade-offs, shortcuts, known debt.
 17. **How did this project change how you think about design?** Not a section to check off. What they carry forward. How this project made them a different designer.
 
 ### Additional questions by type
 
-Read `references/structure-guide.md` for type-specific follow-up questions.
+The questions above are the universal set. Each designer type has follow-ups that surface what's specific to their craft (e.g. research methods for UX researchers, governance for design systems, motion specs for interaction designers). **Read the type-specific section in `references/structure-guide.md` and ask those follow-ups too.** Skipping them produces case studies that read the same regardless of designer type.
 
 ### NDA-constrained work
 
@@ -168,7 +185,7 @@ Their answer determines the structure. Different projects have different story s
 - **A collaboration challenge**: how you aligned, negotiated, and got the work out the door.
 - **A systemic change**: the before/after at the system level. What was the world before your work, and what is it now?
 
-Read `references/structure-guide.md` for narrative frameworks (BLUF, Minto Pyramid, Freytag's arc, magazine feature, craft essay) and match the framework to the story shape.
+**Read `references/structure-guide.md` now** for the narrative frameworks (BLUF, Minto Pyramid, Freytag's arc, magazine feature, craft essay) and match the framework to the story shape. Picking the framework from memory leads to defaulting to the same one every time. The guide has the criteria for choosing.
 
 **Do not default to the same section order for every project.** If every case study in a portfolio reads the same way, it signals the designer is executing a template rather than thinking about what makes each project distinct.
 

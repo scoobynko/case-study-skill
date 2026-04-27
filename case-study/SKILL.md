@@ -216,15 +216,22 @@ These are available for the case study. Use what the story needs. Order them to 
 
 **Your role + team**: one paragraph or metadata block. Who did what. Calibrated verbs.
 
-**How I worked**: a short block (2 to 5 sentences, or a compact list) covering AI use across the project. Pull from two question answers:
+**How I worked**: a short block (2 to 5 sentences, or a compact list) describing how the work was actually made. Pull from two question answers:
 - Step 2 #5 covers AI in the design process: research, synthesis, ideation, prototyping, content, visual exploration, motion, asset generation.
-- Step 1.5 design engineer question covers AI in code authorship: what the agent generated vs. what the designer wrote or reworked, and how correctness was verified.
+- Step 1.5 design engineer question covers code authorship: what the designer wrote by hand vs. what an AI agent generated, and how correctness was verified.
 
-Include this block on every case study where AI was used at all. Always include it for design engineer or hybrid mode case studies, even when AI was only used at one step. Skip the block entirely (and say nothing) for fully solo, hand-made work. Name specific tools, name specific steps, and name where the designer made the design and judgment calls. Disclosure is a craft signal in 2026, not a confession. Frame this honestly, in the designer's voice, not as a corporate statement.
+When to include:
+- **Design engineer or hybrid mode**: always include. Whether the designer wrote every line by hand or scaffolded with Claude Code, this block surfaces craft. A designer who shipped production code themselves is a strong signal worth naming. A designer who used AI tools transparently is also a strong signal.
+- **Designer mode with AI used in the design process**: include and describe what AI was used for and where the designer's judgment calls happened.
+- **Designer mode with no AI used at all**: skip the block silently.
 
-Strong example: "Research synthesis: clustered 40 user interview transcripts with Claude. Reviewed every cluster and rewrote the themes that flattened important nuance. Code: scaffolded the API client and the migration script with Claude Code, verified with the existing test suite. Designed the interaction model, chose the motion specs, and wrote the empty-state copy by hand."
+Name specific tools, name specific steps, name where the designer made the design and judgment calls. In 2026, hand-built code by a designer and transparent AI use are both craft signals. Hidden AI use is the only failure mode. Frame this honestly, in the designer's voice, not as a corporate statement.
 
-Weak example: "Used AI to help with research and code."
+Strong example (solo coded): "Wrote the entire frontend by hand: React, Framer Motion, the design tokens. No AI assistance on code. Pulled visual references from a Figma moodboard I keep updated."
+
+Strong example (mixed): "Research synthesis: clustered 40 user interview transcripts with Claude. Reviewed every cluster and rewrote the themes that flattened important nuance. Code: scaffolded the API client and the migration script with Claude Code, verified against the existing test suite. Designed the interaction model, chose the motion specs, and wrote the empty-state copy by hand."
+
+Weak example: "Used AI to help with research and code." (Names no tools, no steps, no judgment calls.)
 
 **Point of view**: what the designer believed about this problem space that shaped their approach. 2 to 4 sentences. Optional but when present, elevates the entire case study.
 

@@ -1,6 +1,6 @@
 ---
 name: case-study
-description: Help designers and design engineers write portfolio case studies as markdown files. Use this skill whenever someone wants to write a case study, portfolio piece, project write-up, or craft essay about something they designed or built. Triggers on "case study," "portfolio piece," "write up what I built," "document this feature," "craft post," or any request to turn shipped (or unshipped) design work into a presentable markdown page. Also triggers when someone mentions a git branch, PR, or diff in the context of writing about their work, or wants to pull analytics data to quantify impact. Works for all designer types — UX, product, visual, interaction, design systems, research, and design engineering. This is a portfolio coach that asks the right questions, not a template filler.
+description: Help designers and design engineers write portfolio case studies as markdown files. Use this skill whenever someone wants to write a case study, portfolio piece, project write-up, or craft essay about something they designed or built. Triggers on "case study," "portfolio piece," "write up what I built," "document this feature," "craft post," or any request to turn shipped (or unshipped) design work into a presentable markdown page. Also triggers when someone mentions a git branch, PR, or diff in the context of writing about their work, or wants to pull analytics data to quantify impact. Works for UX, product, visual, interaction, design systems, research, and design engineering designers. This is a portfolio coach that asks the right questions, not a template filler.
 compatibility: Requires git for design engineer mode. Optionally uses analytics MCP servers (Amplitude, PostHog, Mixpanel) for metrics discovery.
 license: MIT
 metadata:
@@ -41,7 +41,7 @@ Read the user's prompt and determine:
 
 **Mode**: detect the medium the work shipped in.
 - **Designer mode**: work shipped (or will ship) primarily as Figma frames or static deliverables.
-- **Design engineer mode**: work shipped as code, regardless of whether the user calls themselves a designer or an engineer. The user does NOT need to paste a diff or PR URL — being in a git repo where the work lives is enough.
+- **Design engineer mode**: work shipped as code, regardless of whether the user calls themselves a designer or an engineer. The user does NOT need to paste a diff or PR URL. Being in a git repo where the work lives is enough.
 - **Hybrid**: a designer-led project that shipped in code with no Figma stage (e.g. the design only resolved in motion, real data, or live input). Treat as design engineer mode for code-grounding purposes; treat as designer mode for question framing (POV, tradeoffs, taste).
 
 If the user describes themselves as a "designer" but the work lives in this repo, you are in hybrid mode. Default to grounding in code.
@@ -60,7 +60,7 @@ If the type is unclear from the prompt, ask. One question, not a quiz.
 
 ## Step 1.5: Ground in code FIRST (design engineer or hybrid mode)
 
-If the work shipped as code in a repo the user is in — even if they describe themselves as a "designer," not a "design engineer" — run this BEFORE asking clarifying questions. Listing file paths is not the same as reading them.
+If the work shipped as code in a repo the user is in (even if they describe themselves as a "designer," not a "design engineer") run this BEFORE asking clarifying questions. Listing file paths is not the same as reading them.
 
 The point is to ask questions grounded in what actually shipped, not in what the user remembers shipping.
 
@@ -83,9 +83,9 @@ If the user has design specs in the repo (e.g. `docs/specs/*.md`), read them for
 When the spec and the code disagree, the code wins. ALWAYS verify spec claims against the shipped implementation before describing them in the case study. A 30-second `grep` is cheaper than a paragraph the user has to correct.
 
 Common drift to look for:
-- "We shipped X as a workaround" — check if X actually got solved properly later
-- "We added an analytics event" — grep for the event name
-- "We deleted the old component" — `ls` for it; dormant ≠ deleted
+- "We shipped X as a workaround": check if X actually got solved properly later
+- "We added an analytics event": grep for the event name
+- "We deleted the old component": `ls` for it; dormant is not deleted
 - Step counts, copy, illustration mechanics in onboarding/empty-state UI
 
 ### Discover metrics (when they strengthen the story)
@@ -264,12 +264,27 @@ For analytics charts (when relevant):
 ### Writing rules
 
 1. First person, past tense. "I chose X because Y."
-2. No filler adjectives. Cut "robust," "seamless," "intuitive," "elegant."
+2. No filler adjectives. Cut "robust," "seamless," "intuitive," "elegant," "comprehensive," "powerful."
 3. Name tools and tech specifically. "Framer Motion `layoutId`" not "smooth animations."
 4. Code is seasoning (design engineer mode). 5 to 15 lines max per snippet.
 5. Every visual earns its place. No decorative screenshots.
 6. Skip empty blocks. Never write "Impact: TBD."
 7. Each case study should feel editorially distinct from every other case study in the same portfolio.
+
+### Voice rules (avoid AI-slop tells)
+
+A reader should not be able to tell this was drafted with an LLM. The fastest way to fail this test is punctuation and phrasing patterns that LLMs overuse. Hard rules:
+
+1. **No em-dashes (—) or en-dashes (–) as sentence separators.** Use a period, comma, parentheses, or colon instead. The em-dash is the single strongest "this was written by an AI" signal in 2026. Hyphens in compound words (`well-known`, `co-led`) are fine.
+2. **No "It's not just X, it's Y" constructions.** Or any of its variants: "more than just," "not only X but Y." State the thing directly.
+3. **No "whether you're X or Y" framing.** No "in today's fast-paced world." No "let's dive in." No "at the end of the day."
+4. **No hedging openers.** Cut "It's worth noting that," "It's important to remember," "Of course," "Indeed."
+5. **No banned verbs.** Never use: delve, leverage, unlock, navigate (figuratively), unpack (figuratively), dive into, harness, empower, streamline, supercharge.
+6. **No tricolons by default.** LLMs love three-item parallel lists ("fast, simple, and reliable"). Use one strong word or two contrasting ones unless three items are genuinely distinct.
+7. **No corporate/marketing register.** Write like the designer is talking to a peer over coffee, not pitching to a board. Contractions are fine. Plain words beat impressive ones.
+8. **Vary sentence length.** Real writing has rhythm. If three sentences in a row are 18 to 22 words, rewrite one short.
+
+When in doubt, read the sentence aloud. If it sounds like a LinkedIn post, rewrite it.
 
 ## Step 6: Review and deliver
 

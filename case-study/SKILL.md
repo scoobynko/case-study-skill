@@ -92,6 +92,8 @@ Common drift to look for:
 
 **Always raise metrics explicitly.** Do not skip this step silently. The user will not always remember to bring up impact data, and a case study that could have had real numbers but didn't is a missed opportunity. Make metrics a visible checkpoint, not a footnote.
 
+**Required reading before this checkpoint:** open `references/metrics-guide.md` and read it now. It contains the full discovery process — how to map code changes to user behaviors, which metric type fits which change, how to define a fair comparison window, how to present the metrics brief, and how to connect to and query analytics MCPs. The summary in this file is not a substitute. Do not run the checkpoint from memory.
+
 Run this checkpoint in two steps:
 
 1. **Check what's connected.** Scan the available MCP servers for anything analytics-shaped (Amplitude, PostHog, Mixpanel, GA4, Statsig, Heap, Pendo, Hex, Metabase, internal warehouses, etc.). If you find one, say so and offer to pull data: "I see Amplitude is connected. Want me to look up impact metrics for this feature?" If you do not recognize any of the connected MCPs as analytics, still ask: "I don't see an analytics MCP I recognize. Do you have one connected I might be missing, or analytics data elsewhere (dashboards, internal queries, A/B test platform)? I can shape queries you run yourself, or work without numbers." Never assume the absence of a known name means there's no data source — many teams use internal or less-common tools.
@@ -101,7 +103,7 @@ Run this checkpoint in two steps:
 
 **Metrics are noise**: craft-focused work (a beautiful interaction doesn't need a conversion funnel), early-stage exploration, design system foundations before adoption data exists, work where the value is in the thinking. Even here, name that you considered metrics and chose to skip them, so the decision is deliberate.
 
-Whenever metrics are in scope, read `references/metrics-guide.md` and follow the full discovery process before drafting. In designer mode, still ask the user about metrics in Step 2 question #15 explicitly, even if you can't pull them yourself.
+Once you've decided metrics are in scope, follow `references/metrics-guide.md` end-to-end before drafting. The guide is the authoritative process — its metric-type table, comparison-window rules, and metrics-brief format are how you avoid presenting vanity numbers. In designer mode, still ask the user about metrics in Step 2 question #15 explicitly, even if you can't pull them yourself; the guide's framing for honest impact presentation applies there too.
 
 ### Additional design engineer questions
 
@@ -139,7 +141,7 @@ Do NOT dump all questions at once. Ask 2 to 3 at a time, conversationally. Adapt
 
 ### Understanding the outcome and growth
 
-15. **What was the outcome? Do you have metrics?** Always ask about metrics explicitly, even in designer mode. Probe for what's available: analytics dashboards (Amplitude, PostHog, GA), internal queries, A/B test results, support ticket deltas, qualitative feedback, adoption numbers. If the user has data but hasn't pulled it, offer to help shape the queries. If an analytics MCP is connected, offer to pull the numbers directly. Be specific or skip it: "Users liked it" is not an outcome. (If metrics are central to the story, read `references/metrics-guide.md`.)
+15. **What was the outcome? Do you have metrics?** Always ask about metrics explicitly, even in designer mode. Probe for what's available: analytics dashboards (Amplitude, PostHog, GA), internal queries, A/B test results, support ticket deltas, qualitative feedback, adoption numbers. If the user has data but hasn't pulled it, offer to help shape the queries — `references/metrics-guide.md` has the metric-type table and presentation format you should pull from when shaping those questions. If an analytics MCP is connected, offer to pull the numbers directly and follow the guide's discovery steps. Be specific or skip it: "Users liked it" is not an outcome.
 16. **What would you do differently?** Honest trade-offs, shortcuts, known debt.
 17. **How did this project change how you think about design?** Not a section to check off. What they carry forward. How this project made them a different designer.
 

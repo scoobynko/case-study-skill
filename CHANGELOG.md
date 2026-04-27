@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/scoobynko/case-study-skill/compare/v1.3.1...v1.4.0) (2026-04-27)
+
+
+### Features
+
+* ask about AI use in design process and code authorship ([0a22cc6](https://github.com/scoobynko/case-study-skill/commit/0a22cc6229c476af2f87201c03cb0d1d94fad48f))
+* ask about AI use in design process and code authorship ([03c798f](https://github.com/scoobynko/case-study-skill/commit/03c798ffaea765d23448a0c0d0f9110676db15c6))
+
 ## [1.3.1](https://github.com/scoobynko/case-study-skill/compare/v1.3.0...v1.3.1) (2026-04-27)
 
 

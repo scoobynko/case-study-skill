@@ -103,6 +103,7 @@ If metrics are relevant, read `references/metrics-guide.md` for the full discove
 - What's the most interesting technical problem you solved?
 - Any performance improvements you can quantify? (Bundle size, LCP, FCP, TTI)
 - What interaction details are you proud of? (Specific easing curves, spring parameters, transition timing)
+- **Did you write this code yourself, with an AI agent (Claude Code, Cursor, Copilot, etc.), or in a pair/team?** Ask this whenever code was inspected. If AI was involved, what did the agent generate vs. what did the user write or rework, and how did the user verify correctness (tests, manual QA, review)? The design-process AI question (#5 in Step 2) covers research and prototyping; this question covers code authorship specifically. Both answers feed the "How I worked" block in the case study.
 
 ## Step 2: Ask the right questions
 
@@ -114,27 +115,28 @@ Do NOT dump all questions at once. Ask 2 to 3 at a time, conversationally. Adapt
 2. **What was the problem?** What was broken, missing, slow, confusing? Ground it in something observable.
 3. **Who was this for?** End users, internal team, specific persona, another audience?
 4. **What was your role?** What did you personally own vs. contribute to vs. support? Who else was on the team? Use calibrated verbs: led, co-led, contributed to, supported.
-5. **What were the constraints?** Timeline, tech stack, team size, scope, a11y requirements, politics. Every project has constraints.
+5. **Where did AI fit into your design process?** Research, synthesis, ideation, prototyping, content and copy, visual exploration, motion, asset generation, anywhere else? For each step where AI was used, what did you use it for, and where did you make the design and judgment calls yourself? If AI was not used at all, say so plainly. Ask this on every project regardless of mode. AI disclosure is a craft signal in 2026, not a confession. Honest beats impressive.
+6. **What were the constraints?** Timeline, tech stack, team size, scope, a11y requirements, politics. Every project has constraints.
 
 ### Understanding the thinking
 
-6. **What made this problem interesting or hard from a design perspective?** Not just "what was the problem" but why it wasn't obvious, why standard solutions didn't fit, what made it a design challenge rather than just an execution task.
-7. **What do you believe about this problem space that shaped your approach?** Their point of view, their design principles for this context. The difference between a designer who executes and one who has opinions.
-8. **What did you try that didn't work?** Rejected approaches, killed prototypes, ideas that looked good in Figma but fell apart in testing or code. Push for specifics if the answer is vague.
-9. **What was the messy part?** Pivots mid-project, moments of being stuck, debates with the team, unexpected findings that changed direction. Not a clean "we explored A, B, C and chose B" narrative. The real shape of the project.
-10. **What decision felt risky at the time?** The moment they had to make a call without certainty and commit to it.
+7. **What made this problem interesting or hard from a design perspective?** Not just "what was the problem" but why it wasn't obvious, why standard solutions didn't fit, what made it a design challenge rather than just an execution task.
+8. **What do you believe about this problem space that shaped your approach?** Their point of view, their design principles for this context. The difference between a designer who executes and one who has opinions.
+9. **What did you try that didn't work?** Rejected approaches, killed prototypes, ideas that looked good in Figma but fell apart in testing or code. Push for specifics if the answer is vague.
+10. **What was the messy part?** Pivots mid-project, moments of being stuck, debates with the team, unexpected findings that changed direction. Not a clean "we explored A, B, C and chose B" narrative. The real shape of the project.
+11. **What decision felt risky at the time?** The moment they had to make a call without certainty and commit to it.
 
 ### Understanding the craft
 
-11. **What are you proudest of?** The craft detail, the clever solve, the research insight, the interaction that feels right.
-12. **What's the detail that took disproportionate effort and most people won't notice?** The invisible work that separates good from great. This tells you more about a designer than any hero shot.
-13. **Show me the thing you think is actually good and tell me why.** Not "what's the most impressive thing" but "what do you genuinely think is good work." This reveals taste.
+12. **What are you proudest of?** The craft detail, the clever solve, the research insight, the interaction that feels right.
+13. **What's the detail that took disproportionate effort and most people won't notice?** The invisible work that separates good from great. This tells you more about a designer than any hero shot.
+14. **Show me the thing you think is actually good and tell me why.** Not "what's the most impressive thing" but "what do you genuinely think is good work." This reveals taste.
 
 ### Understanding the outcome and growth
 
-14. **What was the outcome?** Metrics if available, qualitative feedback if not. Be specific or skip it. "Users liked it" is not an outcome. (If metrics are central to the story, read `references/metrics-guide.md`.)
-15. **What would you do differently?** Honest trade-offs, shortcuts, known debt.
-16. **How did this project change how you think about design?** Not a section to check off. What they carry forward. How this project made them a different designer.
+15. **What was the outcome?** Metrics if available, qualitative feedback if not. Be specific or skip it. "Users liked it" is not an outcome. (If metrics are central to the story, read `references/metrics-guide.md`.)
+16. **What would you do differently?** Honest trade-offs, shortcuts, known debt.
+17. **How did this project change how you think about design?** Not a section to check off. What they carry forward. How this project made them a different designer.
 
 ### Additional questions by type
 
@@ -213,6 +215,23 @@ These are available for the case study. Use what the story needs. Order them to 
 **Before state** (screenshot placeholder): the old UI or previous state, if the comparison is clear and fair.
 
 **Your role + team**: one paragraph or metadata block. Who did what. Calibrated verbs.
+
+**How I worked**: a short block (2 to 5 sentences, or a compact list) describing how the work was actually made. Pull from two question answers:
+- Step 2 #5 covers AI in the design process: research, synthesis, ideation, prototyping, content, visual exploration, motion, asset generation.
+- Step 1.5 design engineer question covers code authorship: what the designer wrote by hand vs. what an AI agent generated, and how correctness was verified.
+
+When to include:
+- **Design engineer or hybrid mode**: always include. Whether the designer wrote every line by hand or scaffolded with Claude Code, this block surfaces craft. A designer who shipped production code themselves is a strong signal worth naming. A designer who used AI tools transparently is also a strong signal.
+- **Designer mode with AI used in the design process**: include and describe what AI was used for and where the designer's judgment calls happened.
+- **Designer mode with no AI used at all**: skip the block silently.
+
+Name specific tools, name specific steps, name where the designer made the design and judgment calls. In 2026, hand-built code by a designer and transparent AI use are both craft signals. Hidden AI use is the only failure mode. Frame this honestly, in the designer's voice, not as a corporate statement.
+
+Strong example (solo coded): "Wrote the entire frontend by hand: React, Framer Motion, the design tokens. No AI assistance on code. Pulled visual references from a Figma moodboard I keep updated."
+
+Strong example (mixed): "Research synthesis: clustered 40 user interview transcripts with Claude. Reviewed every cluster and rewrote the themes that flattened important nuance. Code: scaffolded the API client and the migration script with Claude Code, verified against the existing test suite. Designed the interaction model, chose the motion specs, and wrote the empty-state copy by hand."
+
+Weak example: "Used AI to help with research and code." (Names no tools, no steps, no judgment calls.)
 
 **Point of view**: what the designer believed about this problem space that shaped their approach. 2 to 4 sentences. Optional but when present, elevates the entire case study.
 

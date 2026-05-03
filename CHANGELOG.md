@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/scoobynko/case-study-skill/compare/v1.4.1...v1.4.2) (2026-05-03)
+
+
+### Bug Fixes
+
+* ground design engineer mode in branch + PR + working tree, not just merged commits ([7ba13b0](https://github.com/scoobynko/case-study-skill/commit/7ba13b0f37adbc36def515d29fda061c2c4d13a8))
+
 ## [1.4.1](https://github.com/scoobynko/case-study-skill/compare/v1.4.0...v1.4.1) (2026-04-27)
 
 

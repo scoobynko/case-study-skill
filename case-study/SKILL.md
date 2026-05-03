@@ -76,15 +76,44 @@ The point is to ask questions grounded in what actually shipped, not in what the
 
 ### Read the actual changes
 
-git log <main>..<feature-branch> --oneline --no-merges
-git diff <main>...<feature-branch> --stat
-gh pr list --state merged --search "<scope>" --limit 5
+The work for a case study rarely lives in one place. A merged commit is only a slice. To see the full picture, walk all four layers — working tree, current branch, open PRs, merged history — and only then read files. Skipping a layer is how you end up describing the wrong version of the work.
 
-Then OPEN the most interesting 2 to 4 shipped files. Read them, don't just confirm they exist. Pay attention to:
+**1. Working tree (uncommitted / unstaged work).** What the user is editing right now matters — it's often the polish or the in-progress follow-up they want to write about.
+
+    git status
+    git diff                    # unstaged
+    git diff --staged           # staged
+    git stash list              # don't ignore stashes; ask the user before assuming they're abandoned
+
+**2. Current branch vs. base (committed but not yet merged).** Includes unpushed commits. This is usually where the case study work actually lives if the user is mid-flight.
+
+    git branch --show-current
+    git log <base>..HEAD --oneline --no-merges
+    git diff <base>...HEAD --stat
+    git log @{upstream}..HEAD --oneline 2>/dev/null   # unpushed commits, if upstream exists
+
+Pick `<base>` carefully. It's usually `main` or `master`, but for stacked work it may be another feature branch. Ask if unsure rather than guess.
+
+**3. Open / draft PRs (review-stage work).** A draft PR can carry the most interesting iteration: review comments, force-pushes, things the team pushed back on. Don't miss it.
+
+    gh pr status                                              # PRs touching the current branch
+    gh pr list --state open --author "@me" --limit 10
+    gh pr list --state all --search "<scope>" --limit 10
+    gh pr view <number> --comments                            # review discussion is signal
+
+**4. Merged history (what already shipped).** Last, not first. Useful for context, prior versions, and confirming what actually landed.
+
+    gh pr list --state merged --search "<scope>" --limit 5
+    git log --since="<reasonable window>" --oneline --no-merges -- <relevant paths>
+
+Then OPEN the most interesting 2 to 4 changed files across all four layers. Read them, don't just confirm they exist. Pay attention to:
 - What the component actually does on mount, on user input, on cleanup
 - Coordinated calls across subsystems (a real fix vs. a single-button workaround)
 - Tests, which often document the behaviour the user is proudest of
 - Comments that name trade-offs, TODOs, or "v2" markers
+- Diffs between the current branch and what already merged — the gap is often the story
+
+If the layers disagree (e.g. the merged PR shipped one approach, the current branch is rewriting it), ask the user which version the case study is about before drafting. Don't pick silently.
 
 ### Specs describe intent. Code describes reality.
 

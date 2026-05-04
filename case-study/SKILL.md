@@ -238,22 +238,19 @@ Generate a single `.md` file. Structure follows the story shape from Step 3, not
 
 ### Pre-write checklist: every section must trace to a user answer
 
-Before drafting, list the sections you intend to include and, for each one, the specific answer (or set of answers) from the conversation that backs it. If a section has no backing answer, do one of two things:
+Before drafting, list every section you plan to include and the specific user answer (or verified code reference) that backs it. The default is to **ask, not skip**. If a section has no backing answer, ask the question — even if you asked something nearby earlier, even if it feels redundant, even if you think you can guess. Walk through each section in the planned outline and confirm there is an answer for it before any prose is written.
 
-1. Ask the user the missing question now, and wait for the answer before drafting that section.
-2. Drop the section from the draft.
+If, after asking, the user explicitly declines or says "skip it," drop the section silently. Never write the section "as a placeholder," "based on what's likely true," or "to be edited by the user later." The user did not say it, so it does not appear.
 
-There is no third option. Do not write the section "as a placeholder," do not write it "based on what's likely true," do not write it "to be edited by the user later." The user did not say it, so it does not appear.
+This applies especially to the sections the agent is tempted to invent because they sound essential to a case study. For each one, ask the listed question before drafting:
 
-This applies especially to the sections the agent is tempted to invent because they sound essential to a case study:
-
-- **Trade-offs / What I'd do differently** — backed only by Step 2 question #16. If unanswered, omit.
-- **What this changed / Lessons** — backed only by Step 2 question #17. If unanswered, omit.
-- **Point of view** — backed only by Step 2 question #8. If unanswered, omit.
-- **What you explored and killed** — backed only by Step 2 question #9. If unanswered, omit.
-- **The messy middle** — backed only by Step 2 question #10 (and #11). If unanswered, omit.
-- **Craft details** — backed only by Step 2 questions #12, #13, #14. If unanswered, omit.
-- **Impact / metrics** — backed by the metrics checkpoint and #15. If no real numbers exist, do not write fake ones; either say "too early to measure" in the user's voice (only if they said so) or omit.
+- **Trade-offs / What I'd do differently** — Step 2 question #16. Ask explicitly.
+- **What this changed / Lessons** — Step 2 question #17. Ask explicitly.
+- **Point of view** — Step 2 question #8. Ask explicitly.
+- **What you explored and killed** — Step 2 question #9. Ask explicitly.
+- **The messy middle** — Step 2 question #10 (and #11). Ask explicitly.
+- **Craft details** — Step 2 questions #12, #13, #14. Ask explicitly.
+- **Impact / metrics** — metrics checkpoint and #15. If no real numbers exist, do not write fake ones; either say "too early to measure" in the user's voice (only if they said so) or omit.
 
 When in doubt about whether you are inventing or paraphrasing, you are inventing. Ask.
 

@@ -5,7 +5,7 @@ compatibility: Requires git for design engineer mode. Optionally uses analytics 
 license: MIT
 metadata:
   author: jakubsalmik
-  version: "1.4.2" # x-release-please-version
+  version: "1.4.3" # x-release-please-version
   url: https://jakubsalmik.com/case-study-skill
 ---
 

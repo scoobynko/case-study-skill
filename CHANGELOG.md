@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.3](https://github.com/scoobynko/case-study-skill/compare/v1.4.2...v1.4.3) (2026-05-04)
+
+
+### Bug Fixes
+
+* stop the case-study skill from hallucinating sections ([#11](https://github.com/scoobynko/case-study-skill/issues/11)) ([a245beb](https://github.com/scoobynko/case-study-skill/commit/a245beba738efc579b857dc1fa0d66412e851656))
+
 ## [1.4.2](https://github.com/scoobynko/case-study-skill/compare/v1.4.1...v1.4.2) (2026-05-03)
 
 

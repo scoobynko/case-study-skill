@@ -22,6 +22,8 @@ This skill has **two modes**, detected automatically from the user's prompt:
 
 The agent always asks questions first. It never fills sections with assumptions.
 
+**Hard rule: no answer, no section.** If the user did not provide an answer to the question that backs a section, that section does not appear in the draft. The agent never invents trade-offs, "what I'd do differently," lessons learned, rejected approaches, point-of-view statements, craft details, metrics, or any other content the user has not supplied or confirmed. If a section feels important and the user has not answered, ask the question. If the user declines or skips, leave the section out — do not fill it with plausible-sounding content. Hallucinating any part of a case study is the worst possible failure mode of this skill.
+
 ## Philosophy
 
 Core principles:
@@ -234,6 +236,27 @@ Before writing, review what you have. Challenge weak spots:
 
 Generate a single `.md` file. Structure follows the story shape from Step 3, not a fixed template.
 
+### Pre-write checklist: every section must trace to a user answer
+
+Before drafting, list the sections you intend to include and, for each one, the specific answer (or set of answers) from the conversation that backs it. If a section has no backing answer, do one of two things:
+
+1. Ask the user the missing question now, and wait for the answer before drafting that section.
+2. Drop the section from the draft.
+
+There is no third option. Do not write the section "as a placeholder," do not write it "based on what's likely true," do not write it "to be edited by the user later." The user did not say it, so it does not appear.
+
+This applies especially to the sections the agent is tempted to invent because they sound essential to a case study:
+
+- **Trade-offs / What I'd do differently** — backed only by Step 2 question #16. If unanswered, omit.
+- **What this changed / Lessons** — backed only by Step 2 question #17. If unanswered, omit.
+- **Point of view** — backed only by Step 2 question #8. If unanswered, omit.
+- **What you explored and killed** — backed only by Step 2 question #9. If unanswered, omit.
+- **The messy middle** — backed only by Step 2 question #10 (and #11). If unanswered, omit.
+- **Craft details** — backed only by Step 2 questions #12, #13, #14. If unanswered, omit.
+- **Impact / metrics** — backed by the metrics checkpoint and #15. If no real numbers exist, do not write fake ones; either say "too early to measure" in the user's voice (only if they said so) or omit.
+
+When in doubt about whether you are inventing or paraphrasing, you are inventing. Ask.
+
 ### Frontmatter
 
 ```yaml
@@ -291,11 +314,11 @@ Weak example: "Used AI to help with research and code." (Names no tools, no step
 
 **What you explored and killed**: 2 to 3 rejected approaches with reasons.
 
-**Trade-offs**: what you'd do differently with more time or knowledge. Honest.
+**Trade-offs**: what you'd do differently with more time or knowledge. Honest. Only include if the user answered Step 2 question #16. Never invent trade-offs or "what I'd do differently" content — if the user did not name a trade-off, the block does not exist.
 
 **Impact**: metrics (before/after format), qualitative feedback, or honest "too early to measure." Only when metrics strengthen the story. For craft-focused projects, the work itself is the proof.
 
-**What this changed**: how the project changed the designer's thinking. What they carry forward.
+**What this changed**: how the project changed the designer's thinking. What they carry forward. Only include if the user answered Step 2 question #17. Do not paraphrase a generic lesson the user did not state.
 
 **Credits**: name collaborators and what they did.
 
@@ -335,6 +358,7 @@ For analytics charts (when relevant):
 5. Every visual earns its place. No decorative screenshots.
 6. Skip empty blocks. Never write "Impact: TBD."
 7. Each case study should feel editorially distinct from every other case study in the same portfolio.
+8. **Never write a sentence the user did not say or confirm.** Every claim, trade-off, lesson, opinion, and rejected approach must trace to a user answer or to verified code. Plausible-sounding filler is the failure mode this skill exists to prevent. If the answer isn't in the conversation, ask — don't infer.
 
 ### Voice rules (avoid AI-slop tells)
 
@@ -371,6 +395,8 @@ When in doubt, read the sentence aloud. If it sounds like a LinkedIn post, rewri
 - Create slide decks or presentations
 - Build the portfolio site itself
 - Invent metrics or outcomes
+- Invent trade-offs, lessons learned, or "what I'd do differently" content the user never said
 - Fill sections with assumptions instead of asking
+- Hallucinate any section, sentence, or claim — if the user did not answer the question that backs it, the section is dropped or the question is asked again
 - Write in third person or corporate voice
 - Apply the same structure to every project

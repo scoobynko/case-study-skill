@@ -25,6 +25,23 @@ case-study/
     └── metrics-guide.md         # Impact metrics discovery, analytics MCP
 ```
 
+## Contributing
+
+Releases are automated by [release-please](https://github.com/googleapis/release-please), which derives the next version from [Conventional Commits](https://www.conventionalcommits.org/). The commit message (or PR title, if you squash-merge) determines the bump:
+
+| Prefix | Example | Effect |
+|---|---|---|
+| `fix:` | `fix: handle empty diff in design-engineer mode` | patch (1.4.1 → 1.4.2) |
+| `feat:` | `feat: add metrics-guide reference` | minor (1.4.1 → 1.5.0) |
+| `feat!:` or `BREAKING CHANGE:` in body | `feat!: rename SKILL.md frontmatter` | major (1.4.1 → 2.0.0) |
+| `chore:`, `docs:`, `refactor:`, `test:`, `ci:` | `docs: clarify install step` | no release |
+
+Use the imperative mood ("add", not "added"). Keep the subject under ~72 chars; put rationale in the body.
+
+### Enforcement
+
+PR titles are linted by `.github/workflows/lint-pr-title.yml` — non-conforming titles block the merge. For direct pushes to `main`, write a conforming commit message; non-`feat`/`fix` commits are simply ignored by release-please rather than rejected.
+
 ## Credits
 
 Built by [Jakub Salmik](https://jakubsalmik.com).
